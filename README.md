@@ -2,11 +2,24 @@
 
 We designed a model to process a dataset of images (the product images) and their associated numeric values and text labels, which is going to be the value of the quantity that needs to be identified and its respective unit (e.g., 50 grams, 10 kg), extract key information, and perform image processing using GPU acceleration with TensorFlow. The results are saved to a CSV file, and the code is optimized to handle large datasets by processing images in batches.
 
-## Importing Required Libraries
-No APIs and pre-trained models were used. TensorFlow is used for GPU-accelerated image processing, while libraries such as PIL (Python Imaging Library) and requests help download and manipulate images. asyncio allows for asynchronous processing, improving performance by handling tasks concurrently. Additionally, nest_asyncio has been applied to enable async event loops in environments like Jupyter notebooks. We also make use of easyocr, which is a Python library that provides Optical Character Recognition (OCR) capabilities. 
+## Cloning Repository
+    git clone https://github.com/sha123-gif/my-project.git
+    cd my-project
+   
+## Installing Required Packages
+    pip install -r requirements.txt
+
 
 ## Dataset Loading and Setup
-A CSV file with image links and numeric data is loaded into a pandas DataFrame. An output CSV is initialized to store the results (image name, numeric value, and text). A checkpoint file tracks processed images to avoid redundancy and improve efficiency.
+Dataset info:
+| Attribute | Detail |
+| ------------- | ------------- |
+| image_link   | link of image that needs to be processed  |
+| group_id  | Identification of images from same group (i.e. different images of same product)  |
+| entity_name  | the type of value  |
+| entity_value  | numeric value along with metric  |
+
+A CSV file with image links and numeric data is loaded into a pandas DataFrame. An output CSV is initialized to store the results (only containing image name, numeric value, and text). A checkpoint file tracks processed images to avoid redundancy and improve efficiency.
 
 ## Extracting Numeric and Text Values
 The extract_numeric_and_text function uses regular expressions to find numeric values followed by text in the entity_value column of the dataset. This function returns two values: the numeric value and the associated text (e.g., "50" and "kilograms"). If no match is found, the function returns Null. This is useful when processing image data that may have embedded numeric information.
@@ -24,6 +37,12 @@ The main function, main, manages batch processing by splitting the dataset into 
 The CSV file obtained has separate fields for numeric value detected and the unit. We then combine the numeric_value and text_value columns into a new combined_value column, ensuring both are converted to strings for concatenation. After that, we creates a new DataFrame that retains only the image_name and combined_value columns. The resulting DataFrame is saved as a new CSV file at the specified path, with the print statement confirming successful completion.
 
 ## Accuracy and F1 Score
+
+| Metric | Score |
+| ------------- | ------------- |
+| Acuruacy   | 0.8931  |
+| group_id  | 0.9435  |
+
 
 The model achieved an accuracy of 89.31% on the training data, indicating that it correctly predicted nearly 90% of the cases. Additionally, with an F1 score of 0.9435, the model demonstrates a strong balance between precision and recall, reflecting its ability to handle both false positives and false negatives effectively. These metrics suggest that the model is performing well in terms of both accuracy and robustness in classification.
 
