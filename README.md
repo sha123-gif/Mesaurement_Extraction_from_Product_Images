@@ -12,7 +12,6 @@ We designed a model to process a dataset of images (the product images) and thei
 ## Installing Required Packages
     pip install -r requirements.txt
 
-
 ## Dataset Loading and Setup
 Dataset info:
 | Attribute | Detail |
@@ -47,5 +46,8 @@ The CSV file obtained has separate fields for numeric value detected and the uni
 | group_id  | 0.9435  |
 
 
-The model achieved an accuracy of 89.31% on the training data, indicating that it correctly predicted nearly 90% of the cases. Additionally, with an F1 score of 0.9435, the model demonstrates a strong balance between precision and recall, reflecting its ability to handle both false positives and false negatives effectively. These metrics suggest that the model is performing well in terms of both accuracy and robustness in classification.
+The model achieved an accuracy of **89.31%** on the training data, indicating that it correctly predicted nearly 90% of the cases. Additionally, with an F1 score of **0.9435**, the model demonstrates a strong balance between precision and recall, reflecting its ability to handle both false positives and false negatives effectively. These metrics suggest that the model is performing well in terms of both accuracy and robustness in classification.
+
+
+
 
