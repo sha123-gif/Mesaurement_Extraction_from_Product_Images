@@ -1,4 +1,4 @@
-## Extracting Textual Data from Product Images: A Detailed Process Overview
+## Extraction of numeric and textual data from product images
 
 We designed a model to process a dataset of images (the product images) and their associated numeric values and text labels, which is going to be the value of the quantity that needs to be identified and its respective unit (e.g., 50 grams, 10 kg), extract key information, and perform image processing using GPU acceleration with TensorFlow. The results are saved to a CSV file, and the code is optimized to handle large datasets by processing images in batches.
 
